@@ -3,14 +3,14 @@ import aoc2021.day1 as day1
 
 INPUT_FILE_PATH = 'tests/inputs/day1_tst.txt'
 
-#pylint: disable=protected-access
+# pylint: disable=protected-access
 
 
 def test_process_input():
     """Tests the input processing function to make sure each line is converted
     into a list
     """
-    expected_output = [10, 20, 19, 30, 23, 11]
+    expected_output = [199, 200, 208, 210, 200, 207, 240, 269, 260, 263]
     actual_output = day1._process_inputs(INPUT_FILE_PATH)
     assert expected_output == actual_output
 
