@@ -1,7 +1,25 @@
 """Unit tests for day 2 submission"""
+import operator
+from functools import reduce
+
 import aoc2021.day2 as day2
 
+
 INPUT_FILE_PATH = 'tests/inputs/day2_tst.txt'
+
+TEST_FILE_EXPECTED_INPUT = [('forward', '5'), ('down', '5'), ('forward', '8'),
+                            ('up', '3'), ('down', '8'), ('forward', '2')]
+
+EXPECTED_POSITION_OUTPUT = (15, 10)
+EXPECTED_POSITION_AIM_OUTPUT = (15, 60)
+
+
+def multiply(input):
+    """Return the multiplication of a 'start' value (default: 1) plus an iterable of numbers
+
+    When the iterable is empty, return the start value. This function is intended specifically for use with numeric values and may reject non-numeric types."""
+    return reduce(operator.mul, input)
+
 
 # pylint: disable=protected-access
 
@@ -10,8 +28,7 @@ def test_generate_input():
     """Tests the input processing function to make sure each line is converted
     into the proper list of tuples
     """
-    expected_outputs = [('forward', '3'), ('down', '5'), ('down', '9'),
-                        ('forward', '6'), ('down', '2'), ('forward', '2'), ('up', '1')]
+    expected_outputs = TEST_FILE_EXPECTED_INPUT
     actual_outputs = day2._process_inputs(INPUT_FILE_PATH)
     assert expected_outputs == actual_outputs
 
@@ -19,16 +36,25 @@ def test_generate_input():
 def test_calculate_sub_position():
     """Tests that the horizontal position and depth are calculated correctly
     """
-    expected_output = (11, 15)
-    planned_course = [('forward', '3'), ('down', '5'), ('down', '9'),
-                      ('forward', '6'), ('down', '2'), ('forward', '2'), ('up', '1')]
+    expected_output = EXPECTED_POSITION_OUTPUT
+    planned_course = TEST_FILE_EXPECTED_INPUT
     actual_output = day2._calculate_sub_position(planned_course)
+    assert expected_output == actual_output
+
+
+def test_calculate_sub_position_aim():
+    expected_output = EXPECTED_POSITION_AIM_OUTPUT
+    planned_course = TEST_FILE_EXPECTED_INPUT
+    actual_output = day2._calculate_sub_position_aim(planned_course)
     assert expected_output == actual_output
 
 
 def test_solution():
     """Tests the whole integrated solution with a test input file
     """
-    expected_output = 11*15
+    expected_output = [multiply(EXPECTED_POSITION_OUTPUT),
+                       multiply(EXPECTED_POSITION_AIM_OUTPUT)]
+    planned_course = [('forward', '5'), ('down', '5'), ('forward', '8'),
+                      ('up', '3'), ('down', '8'), ('forward', '2')]
     actual_output = day2.solution(INPUT_FILE_PATH)
     assert actual_output == expected_output
