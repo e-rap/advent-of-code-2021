@@ -14,11 +14,14 @@ EXPECTED_POSITION_OUTPUT = (15, 10)
 EXPECTED_POSITION_AIM_OUTPUT = (15, 60)
 
 
-def multiply(input):
-    """Return the multiplication of a 'start' value (default: 1) plus an iterable of numbers
+def multiply(__iterable):
+    """Return the multiplication of a 'start' value (default: 1) plus an iterable
+    of numbers
 
-    When the iterable is empty, return the start value. This function is intended specifically for use with numeric values and may reject non-numeric types."""
-    return reduce(operator.mul, input)
+    When the iterable is empty, return the start value. This function is intended
+    specifically for use with numeric values and may reject non-numeric types.
+    """
+    return reduce(operator.mul, __iterable)
 
 
 # pylint: disable=protected-access
@@ -43,6 +46,9 @@ def test_calculate_sub_position():
 
 
 def test_calculate_sub_position_aim():
+    """Tests that the horizontal position and depth are calculated correctly when
+    using aim
+    """
     expected_output = EXPECTED_POSITION_AIM_OUTPUT
     planned_course = TEST_FILE_EXPECTED_INPUT
     actual_output = day2._calculate_sub_position_aim(planned_course)
@@ -54,7 +60,5 @@ def test_solution():
     """
     expected_output = [multiply(EXPECTED_POSITION_OUTPUT),
                        multiply(EXPECTED_POSITION_AIM_OUTPUT)]
-    planned_course = [('forward', '5'), ('down', '5'), ('forward', '8'),
-                      ('up', '3'), ('down', '8'), ('forward', '2')]
     actual_output = day2.solution(INPUT_FILE_PATH)
     assert actual_output == expected_output
