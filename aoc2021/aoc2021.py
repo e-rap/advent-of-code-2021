@@ -3,6 +3,8 @@ import importlib
 import logging
 import os
 import sys
+from types import ModuleType
+from typing import List
 
 import click
 
@@ -11,13 +13,23 @@ __version__ = '1.0.0'
 # dynamically import every day
 
 
-def import_day_modules(parent_directory_path: str):
-    modules = []
-    day_modules = [file[:-3] for file in os.listdir(
+def import_day_modules(parent_directory_path: str) -> List[ModuleType]:
+    """Dynamically imports the module for each day and returns a list of containing
+    all the modules
+
+    Args:
+        parent_directory_path (str): parent directory for all the day modules
+
+    Returns:
+        List[ModuleType]: list of imported modules
+    """
+    _modules = []
+    module_names = [file[:-3] for file in os.listdir(
         parent_directory_path) if 'day' in file]
-    for module in day_modules:
-        modules.append(importlib.import_module(module))
-    return modules
+
+    for name in module_names:
+        _modules.append(importlib.import_module(name))
+    return _modules
 
 
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
