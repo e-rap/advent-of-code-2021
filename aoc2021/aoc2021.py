@@ -1,16 +1,29 @@
 """Advent of Code 2021 solutions application"""
+import importlib
 import logging
 import os
 import sys
 
 import click
-import day1
-import day2
 
 __version__ = '1.0.0'
 
+# dynamically import every day
+
+
+def import_day_modules(parent_directory_path: str):
+    modules = []
+    day_modules = [file[:-3] for file in os.listdir(
+        parent_directory_path) if 'day' in file]
+    for module in day_modules:
+        modules.append(importlib.import_module(module))
+    return modules
+
+
 FILE_DIR = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, FILE_DIR)
+
+modules = import_day_modules(FILE_DIR)
 
 log = logging.getLogger()
 log.setLevel(logging.INFO)
@@ -38,7 +51,7 @@ def aoc2021(day):
     """Runs Advent of Code 2021 submissions
     """
 
-    solutions = [day1.solution, day2.solution]
+    solutions = [module.solution for module in modules]
     if day is None:
         log.info('Running all submissions')
         for day in range(1, len(solutions)+1):
