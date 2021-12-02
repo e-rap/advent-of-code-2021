@@ -5,6 +5,7 @@ import sys
 
 import click
 import day1
+import day2
 
 __version__ = '1.0.0'
 
@@ -37,7 +38,7 @@ def aoc2021(day):
     """Runs Advent of Code 2021 submissions
     """
 
-    solutions = [day1.solution]
+    solutions = [day1.solution, day2.solution]
     if day is None:
         log.info('Running all submissions')
         for day in range(1, len(solutions)+1):
