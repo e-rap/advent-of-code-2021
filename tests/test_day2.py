@@ -27,7 +27,7 @@ def multiply(__iterable):
 # pylint: disable=protected-access
 
 
-def test_generate_input():
+def test_process_inputs():
     """Tests the input processing function to make sure each line is converted
     into the proper list of tuples
     """
