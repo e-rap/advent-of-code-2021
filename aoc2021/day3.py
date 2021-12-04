@@ -22,7 +22,7 @@ def solution(input_file_path: str) -> List[int]:
 
     # calculate life support rating part 2
     oxygen = _reduce_by_position(diagnostic_data, operator.ge)
-    c02 = _reduce_by_position(diagnostic_data, operator.le)
+    c02 = _reduce_by_position(diagnostic_data, operator.lt)
     life_support_rating = oxygen * c02
 
     answers.append(power_consumption)
