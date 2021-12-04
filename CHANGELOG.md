@@ -1,4 +1,18 @@
-## 1.1.0 (2021-12-02)
+## 1.2.0 (2021-12-03)
+
+### Fix
+
+- **day3**: update operator type for co2 calculation
+
+### Refactor
+
+- **day2**: update unit test name to match function under test
+
+### Feat
+
+- **day3**: add solution for day 3
+
+## v1.1.0 (2021-12-02)
 
 ### Feat
 
