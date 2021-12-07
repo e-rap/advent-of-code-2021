@@ -1,4 +1,10 @@
-## 1.3.0 (2021-12-06)
+## 1.3.1 (2021-12-06)
+
+### Fix
+
+- **day4**: remove enumerate in _play_bingo due to refactor
+
+## v1.3.0 (2021-12-06)
 
 ### Refactor
 
