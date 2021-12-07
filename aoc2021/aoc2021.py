@@ -8,7 +8,7 @@ from typing import List
 
 import click
 
-__version__ = '1.2.0'
+__version__ = '1.3.0'
 
 # dynamically import every day
 

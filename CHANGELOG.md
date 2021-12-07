@@ -1,4 +1,14 @@
-## 1.2.0 (2021-12-03)
+## 1.3.0 (2021-12-06)
+
+### Refactor
+
+- **day4**: removed unused variable
+
+### Feat
+
+- **day4**: add day 4 solution part 1 & 2
+
+## v1.2.0 (2021-12-03)
 
 ### Fix
 
