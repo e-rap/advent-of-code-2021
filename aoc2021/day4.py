@@ -228,7 +228,7 @@ def _play_bingo(called_numbers: List[int],
 
     for number in called_numbers:
         boards_to_remove = []
-        for index, board in enumerate(bingo_boards):
+        for board in enumerate(bingo_boards):
             if board.mark(number):
                 winners.append((number, board))
                 boards_to_remove.append(board)
