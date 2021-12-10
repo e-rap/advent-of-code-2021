@@ -1,3 +1,4 @@
+default_stages: [commit]
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
     rev: v4.0.1
@@ -22,8 +23,8 @@ repos:
     hooks:
       - id: pytest
         name: pytest
+        language: system
         entry: pytest
-        language: python
-        types: [python]
-        args: ["./"]
+        pass_filenames: false
+        always_run: true
         stages: [push]
